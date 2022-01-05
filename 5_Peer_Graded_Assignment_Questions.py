@@ -61,7 +61,7 @@ def compute_data_choice_2(df):
     avg_late = df.groupby(['Month','Reporting_Airline'])['LateAircraftDelay'].mean().reset_index()
     return [avg_car, avg_weather, avg_NAS, avg_sec, avg_late]
 # Application layout
-app.layout = (html.Div(children=[ 
+app.layout = html.Div(children=[ 
                                 # TODO1: Add title to the dashboard
                                 html.H1('US Domestic Airline Flights Performance',
                                         style={'text-align-last':'centre','color':'#503D36','font-size':24}
@@ -123,16 +123,14 @@ app.layout = (html.Div(children=[
                                          ], 
                                           style={'display': 'flex'})
                                 ])
-             )
-
 # Callback function definition
 # TODO4: Add 5 ouput components
 @app.callback( [Output(component_id='plot1', component_property='children'),
                 Output(component_id='plot2', component_property='children'),
                 Output(component_id='plot3', component_property='children'),
                 Output(component_id='plot4', component_property='children'),
-                Output(component_id='plot5', component_property='children')
-               ],
+                Output(component_id='plot5', component_property='children')]
+               ,
                [Input(component_id='input-type', component_property='value'),
                 Input(component_id='input-year', component_property='value')
                ],
